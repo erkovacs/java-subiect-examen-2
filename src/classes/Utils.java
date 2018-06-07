@@ -22,16 +22,6 @@ public class Utils {
 	public Utils() {
 	}
 	
-	// Just so i can test this code
-	public static void setCars(ArrayList<Car> cars2)
-	{
-		createCars(cars2.size());
-		for(Car car : cars2)
-		{
-			cars.add(car);
-		}
-	}
-	
 	public static List<Vehicle> createCars(int n)
 	{
 		cars = new ArrayList<Vehicle>(n);
@@ -74,9 +64,14 @@ public class Utils {
 		return cars;
 	}
 	
-	public static void writeBinaryCars(String file){
+	public static void writeBinaryCars(String file, List<Vehicle> listP){
 		
 		try {
+			for(Vehicle veh : listP)
+			{
+				Car car = (Car)veh;
+				cars.add(car);
+			}
 			ObjectOutputStream serializer = new ObjectOutputStream (
 					new FileOutputStream(
 							new File(file)

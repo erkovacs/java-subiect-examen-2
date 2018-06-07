@@ -8,7 +8,7 @@ import interfaces.Vehicle;
 public class Examen {
 
 	public static void main(String[] args) {
-		ArrayList<Car> cars = new ArrayList<Car>();
+		ArrayList<Vehicle> cars = new ArrayList<Vehicle>();
 		Car c1 = new Car();
 		try{
 			// Make sure basic stuff works
@@ -24,8 +24,7 @@ public class Examen {
 			
 			// Test serialization/deserialization
 			Utils.createCars(2);
-			Utils.setCars(cars);
-			Utils.writeBinaryCars("cars.dat");
+			Utils.writeBinaryCars("cars.dat", cars);
 			ArrayList<Vehicle> cars2 = (ArrayList<Vehicle>) Utils.readBinaryCars("cars.dat");
 			for(Vehicle veh : cars2){
 				Car car = (Car)veh;

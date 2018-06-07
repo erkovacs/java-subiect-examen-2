@@ -10,7 +10,7 @@ public class VectThread implements Runnable{
 	private double avgWeight;
 	
 	public VectThread(String file) {
-		carsList = Utils.readBinaryCars(file);
+		carsList = Utils.readBinaryCars("cars.dat");
 	}
 
 	@Override

@@ -11,6 +11,7 @@ public class Examen {
 		ArrayList<Car> cars = new ArrayList<Car>();
 		Car c1 = new Car();
 		try{
+			// Make sure basic stuff works
 			c1.setPrice(1000);
 			c1.setProducer("SUZUKI");
 			c1.setWeight(1450);
@@ -20,6 +21,8 @@ public class Examen {
 			c2.setWeight(1600);
 			cars.add(c1);
 			cars.add(c2);
+			
+			// Test serialization/deserialization
 			Utils.createCars(2);
 			Utils.setCars(cars);
 			Utils.writeBinaryCars("cars.dat");
@@ -28,8 +31,19 @@ public class Examen {
 				Car car = (Car)veh;
 				System.out.println("Price: "+ car.getPrice() + "; Producer: " + car.getProducer() + "; Weight: "+ car.getWeight());
 			}
+			
+			// vect thread part
 			VectThread vt = new VectThread("cars.dat");
 			vt.run();
+			
+			// jdbc part
+			UtilsDAO.setConnection();
+			// Fake the data...
+			UtilsDAO.insertData();
+			// Make a simple select
+			System.out.println(UtilsDAO.selectData());
+			// Close db connection
+			UtilsDAO.closeConnection();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

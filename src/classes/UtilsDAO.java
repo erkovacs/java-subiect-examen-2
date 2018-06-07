@@ -39,10 +39,10 @@ public class UtilsDAO {
 	public static String selectData()
 	{
 		StringBuilder retval = new StringBuilder();
-		String SQL = "SELECT * FROM CARS";
+		String sql = "SELECT * FROM CARS";
 		try {
 			Statement stmt = c.createStatement();
-			ResultSet rs  = stmt.executeQuery(SQL);
+			ResultSet rs  = stmt.executeQuery(sql);
 			String separator = System.getProperty("line.separator");
 			while(rs.next())
 			{
